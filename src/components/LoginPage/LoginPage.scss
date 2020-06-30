@@ -1,0 +1,54 @@
+@import "../../settings/colors";
+
+.main__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__modal__container {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $accentColor;
+}
+
+.login__form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 30px 30px;
+  grid-row-gap: 20px;
+
+  label {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.login__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.login__form__login {
+  grid-row: 1/2;
+}
+
+.login__form__password {
+  grid-row: 2/3;
+}
+button {
+  grid-row: 3/4;
+  width: 50%;
+  justify-self: center;
+}
+
+input {
+  background-color: lightgray;
+  border: none;
+  border-radius: 5%;
+}
