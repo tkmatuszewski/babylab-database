@@ -64,7 +64,7 @@ function LoginPage(history) {
                             <h2 className="login__form__watermark"><strong>Data</strong>base</h2>
                         </div>
                         <form className="login__form" onSubmit={handleLogin}>
-                            <span>{errorMsg}</span>
+                            {/*<span>{errorMsg}</span>*/}
                             <label className="login__form__id">
                                 <span className="login__form__id__icon"/>
                                 <input name = "login" type="text" placeholder="Login" required>
