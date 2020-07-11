@@ -1,7 +1,33 @@
-import React from "react";
+import React, {useState, useContext, useCallback} from "react";
+import {Redirect} from "react-router-dom";
+import {AuthContext} from "../Firebase/FirebaseAuth";
+import {app} from '../Firebase/Firebase';
 
-function LoginPage() {
+function LoginPage(history) {
 
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    const handleLogin = useCallback(async event => {
+        event.preventDefault();
+        const {login, password} = event.target.elements;
+        try {
+            await app
+                .auth()
+                .signInWithEmailAndPassword(login.value, password.value);
+            history.push("/")
+        } catch (error) {
+            setErrorMsg(error.message);
+            setTimeout(function () {
+                setErrorMsg(null)
+            }, 5000);
+        }
+    }, [history]);
+
+    const {currentUser} = useContext(AuthContext);
+
+    if (currentUser) {
+        return <Redirect to="/"/>
+    }
     return (
         <div className="main">
             <div className="main__container">
@@ -10,7 +36,7 @@ function LoginPage() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 211.4 297.4">
                             <pattern id="bgImg" patternUnits="userSpaceOnUse" width="1000" height="1000">
                                 <image
-                                    href="https://images.pexels.com/photos/3933250/pexels-photo-3933250.jpeg?cs=srgb&dl=dziewczyna-uroczy-oczy-granie-3933250.jpg&fm=jpg"
+                                    // href="https://images.pexels.com/photos/3933250/pexels-photo-3933250.jpeg?cs=srgb&dl=dziewczyna-uroczy-oczy-granie-3933250.jpg&fm=jpg"
                                     // x="0" y="0" width="100%"
                                     // height="100%"
                                 />
@@ -37,15 +63,16 @@ function LoginPage() {
                             <span className="decor"/>
                             <h2 className="login__form__watermark"><strong>Data</strong>base</h2>
                         </div>
-                        <form className="login__form">
+                        <form className="login__form" onSubmit={handleLogin}>
+                            <span>{errorMsg}</span>
                             <label className="login__form__id">
                                 <span className="login__form__id__icon"/>
-                                <input type="text" placeholder="Login" required>
+                                <input name = "login" type="text" placeholder="Login" required>
                                 </input>
                             </label>
                             <label className="login__form__password">
                                 <span className="login__form__password__icon"/>
-                                <input type="password" placeholder="Hasło" required/>
+                                <input name = "password" type="password" placeholder="Hasło" required/>
                             </label>
                             <button className="login__submit" type="submit">Zaloguj</button>
                         </form>
