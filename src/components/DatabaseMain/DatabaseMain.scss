@@ -1,0 +1,35 @@
+@import "../../settings/colors";
+@import "../../settings/mixins";
+@import "../../settings/fonts";
+
+.database__main {
+  min-height: 92vh;
+  background-color: $backgroundColor;
+}
+
+.database__main__container {
+  @include container__main;
+  min-height: 92vh;
+  margin: 0 auto;
+}
+
+.database__main__control {
+  display: flex;
+  box-shadow: 3px 3px 10px grey;
+  background-color: white;
+}
+
+.database__main__control__container {
+  @include container__main ;
+  margin: 0 auto;
+
+  button {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    color: lighten($darkCold, 10);
+    border: none;
+    background: transparent;
+    margin: 15px 30px;
+    cursor: pointer;
+  }
+}
