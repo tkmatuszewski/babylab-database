@@ -5,3 +5,8 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@mixin container__main {
+  width: 90%;
+  height: 100%;
+}
