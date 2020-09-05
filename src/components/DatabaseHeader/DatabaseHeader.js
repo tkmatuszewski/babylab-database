@@ -8,15 +8,17 @@ function DatabaseHeader() {
                 <h2 className="database__logo"><strong>Data</strong>base</h2>
                 <form className="database__search">
                     <label className="database__search__label">
-                        <span className="database__search__icon"/>
-                        <input className="database__search__input" type="text" placeholder="Szukaj"/>
+                        <span className="database__search__icon" />
+                        <input className="database__search__input" type="text" placeholder="Szukaj" />
                     </label>
                 </form>
-                <button className="database__search__filter"/>
-                <button className="database__logout" onClick= {()=> {
-                app.auth().signOut()}}>
-                Wyloguj</button>
-        </div>
+                <button className="database__search__filter" />
+                <button className="database__logout" onClick={() => {
+                    app.auth().signOut().then(console.log("logout succesfull").else(console.log("logout error")))
+                }}>
+                    Wyloguj
+                </button>
+            </div>
         </header>
     )
 }
