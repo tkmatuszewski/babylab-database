@@ -1,4 +1,9 @@
 @import "reset";
 @import "colors";
 @import "fonts";
-
+@import "mixins";
+@import "../components/LoginPage/LoginPage";
+@import "../components/Database/Database";
+@import "../components/DatabaseHeader/DatabaseHeader";
+@import "../components/DatabaseMain/DatabaseMain";
+@import "../components/AddNewForm/AddNewForm";
