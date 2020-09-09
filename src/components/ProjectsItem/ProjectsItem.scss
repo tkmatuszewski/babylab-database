@@ -1,0 +1,25 @@
+.projects__container__list__element {
+  width: 45%;
+  height: 35vh;
+  background: rgba(white, 0.9);
+  margin-bottom: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects__container__list__element__container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+  }
+}
+.projects__container__list__element__description {
+    margin: 2em 0;
+  }
+
