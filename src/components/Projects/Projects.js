@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import ProjectItem from "../ProjectsItem/ProjectsItem";
 
 const Projects = () => {
+    const [newProject, setNewProject] = useState(false)
+
     const project1 = {
         name: "Project 1",
         description: "Opis projektu",
@@ -26,12 +28,21 @@ const Projects = () => {
         participants: 10,
         meetingCount: 3
     }
+
+    const handleClick = () => {
+        setNewProject(true)
+    }
     return (
         <div className="projects__main">
-            <div className="projects__bg">
-                <h3 className="projects__bg__title">Projekty</h3>
-            </div>
             <div className="projects__container">
+                <div className="projects__bg">
+                    <div className="projects__bg__container">
+                        <h3 className="projects__bg__container__title">Projekty</h3>
+                        <button className="projects__bg__container__button"
+                                onClick={handleClick}>Nowy
+                        </button>
+                    </div>
+                </div>
                 <ul className="projects__container__list">
                     <ProjectItem projectInfo={project1} />
                     <ProjectItem projectInfo={project2} />
