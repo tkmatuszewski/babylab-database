@@ -1,55 +1,84 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import NewProjectModal from "../NewProjectModal/NewProjectModal";
 import ProjectItem from "../ProjectsItem/ProjectsItem";
+import {db} from "../Firebase/FirebaseFirestore";
 
 const Projects = () => {
+
+    const [projectData, getProjectData] = useState([])
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
     const [newProject, setNewProject] = useState(false)
+    const [modalTitle, setModalTitle] = useState("Projekty")
+    const [buttonName, setButtonName] = useState("Nowy")
 
-    const project1 = {
-        name: "Project 1",
-        description: "Opis projektu",
-        participants: 30,
-        meetingCount: 5
-    }
-    const project2 = {
-        name: "Project 2",
-        description: "Opis projektu",
-        participants: 60,
-        meetingCount: 4
-    }
-    const project3 = {
-        name: "Project 3",
-        description: "Opis projektu",
-        participants: 14,
-        meetingCount: 5
-    }
-    const project4 = {
-        name: "Project 4",
-        description: "Opis projektu",
-        participants: 10,
-        meetingCount: 3
+    const handleClick = (boolean) => {
+
+        let title = null
+        let button = null
+        newProject ? title = "Projekty" : title = "Nowy Projekt"
+        newProject ? button = "Dodaj" : button = "Powrót"
+
+        setNewProject(!boolean)
+        setModalTitle(title)
+        setButtonName(button)
     }
 
-    const handleClick = () => {
-        setNewProject(true)
-    }
+    useEffect(() => {
+
+            setLoading(true)
+            const unsubscribe =
+                db
+                    .collection("projects")
+                    .onSnapshot(snapshot => {
+                            const loadedData = [];
+                            snapshot.forEach(doc => {
+                                loadedData.push({data: doc.data(), id: doc.id})
+                            })
+                            getProjectData(loadedData)
+                            setLoading(false)
+                            return unsubscribe()
+                        }, error => {
+                            setError(error)
+                        }
+                    );
+        }, []
+    )
+
     return (
         <div className="projects__main">
-            <div className="projects__container">
-                <div className="projects__bg">
-                    <div className="projects__bg__container">
-                        <h3 className="projects__bg__container__title">Projekty</h3>
-                        <button className="projects__bg__container__button"
-                                onClick={handleClick}>Nowy
+            {newProject ? <NewProjectModal handleClick={handleClick} /> :
+                <div className="projects__main__container">
+                    <div className="projects__side__container">
+                        <div className="projects__side__container__text">
+                            <h3 className="projects__side__container__title">{modalTitle}</h3>
+                            <p className="projects__side__container__content">Wszystkie projekty, które obecnie
+                                realizujemy</p>
+                        </div>
+                        <button className="projects__side__container__button"
+                                onClick={() => {
+                                    handleClick(newProject)
+                                }}>{buttonName}
                         </button>
                     </div>
-                </div>
-                <ul className="projects__container__list">
-                    <ProjectItem projectInfo={project1} />
-                    <ProjectItem projectInfo={project2} />
-                    <ProjectItem projectInfo={project3} />
-                    <ProjectItem projectInfo={project4} />
-                </ul>
-            </div>
+                    <div className="projects__list">
+                        <span className="projects__list__info">Przewiń
+                            <strong />
+                        </span>
+                        <ul className="projects__list__container">
+                            {loading ?
+                                <div className="loader">
+                                    <strong>Loading</strong>
+                                </div>
+                                : projectData.map((project, index) => {
+                                    return <ProjectItem data={project.data}
+                                                        id={project.id}
+                                                        key={index} />
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>}
         </div>
     )
 }
