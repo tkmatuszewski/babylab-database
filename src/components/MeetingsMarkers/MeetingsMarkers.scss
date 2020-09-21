@@ -1,0 +1,10 @@
+@import "../../settings/colors";
+
+.meetingsMarker {
+  height: 12px;
+  width: 12px;
+  display: block;
+  border-radius: 50%;
+  background: $darkCold;
+  margin: 1px;
+}
