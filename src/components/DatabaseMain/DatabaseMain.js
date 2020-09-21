@@ -79,11 +79,11 @@ class DatabaseMain extends Component {
                         </li>
                     </div>
                 </ul>
+                    {this.state.showOption === 'Projekty' ?
+                        <Projects handleCloseModal={this.handleCloseModal} /> : null}
                 <div className="database__main__container">
                     {this.state.showOption === 'Nowy badany' ?
                         <AddNewForm handleCloseModal={this.handleCloseModal} /> : null}
-                    {this.state.showOption === 'Projekty' ?
-                        <Projects handleCloseModal={this.handleCloseModal} /> : null}
                     {this.state.showOption === 'Inne 1' ? <Other1 handleCloseModal={this.handleCloseModal} /> : null}
                     {this.state.showOption === 'Inne 2' ? <Other2 handleCloseModal={this.handleCloseModal} /> : null}
                     {this.state.showDatabase ? <DatabaseData /> : null}

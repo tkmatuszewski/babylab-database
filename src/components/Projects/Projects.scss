@@ -1,71 +1,95 @@
+@import "src/settings/colors";
+
 .projects__main {
-  width: 100%;
-  height: 92vh;
-  background: rgba($lightWarm, 0.3);
-  position: relative;
+  min-height: 82vh;
 }
 
-.projects__bg {
-  height: 80vh;
-  width: 55%;
-  background-color: blue;
-  margin-top: 10vh;
-  transform: translateX(-20vw) skew(9deg, -5deg);
-  box-shadow: 12px -5px 10px 3px rgba(0, 0, 0, 0.16);
+.projects__main__container {
+  margin-left: 5%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
-.projects__bg__title {
+.projects__side__container {
+  width: 25%;
   font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-size: 3em;
-  transform: skew(-9deg, 5deg);
-  margin: 10%;
-}
-
-.projects__container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.projects__container__list {
-  position: absolute;
-  top: 5vh;
-  right: 5vw;
-  width: 70%;
+  margin-top: 5em;
   display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: $darkCold;
+  transition: 0.5s;
+}
+
+.projects__side__container__title {
+  font-size: 4em;
+  margin-bottom: 0.5em;
+}
+
+.projects__side__container__content{
+  line-height: 1.5em;
+}
+
+.projects__side__container__button {
+  width: 30%;
+  height: 2em;
+  font-size: 1.3em;
+  font-weight: bold;
+  background-color: white;
+  border: 0.25px solid $darkCold;
+  cursor: pointer;
+  color: $darkCold;
+  padding: 0.25em;
+  transition: 0.5s;
+
+  &:hover {
+    color: $lightWarm;
+    border: 0.25px solid $lightWarm;
+
+  }
+}
+
+.projects__list {
+  width: 100vw;
+  height: 70%;
+  margin: 3% 0;
+  display: flex;
   align-items: center;
-}
 
-.projects__container__list__element {
-  width: 45%;
-  height: 60vh;
-  background: rgba(white, 0.9);
-  margin-bottom: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.projects__container__list__element__container {
-  width: 80%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-
-  h4 {
+  .projects__list__info {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2em;
+    color: $darkCold;
+    width: 10%;
+    margin: 5%;
+
+    strong {
+      width: 60%;
+      display: block;
+      height: 2px;
+      background-color: $darkCold;
+      margin-top: 10px;
+      border-bottom: 0.25px solid $darkCold;
+    }
+  }
+}
+
+.projects__list__container {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin: 2%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    margin-top: 2em;
+    height: 1px;
+    cursor: pointer;
   }
 
-  p {
-    margin-top: 2em;
+  &::-webkit-scrollbar-thumb {
+    background-color: $darkCold;
+    outline: 20px solid $darkCold;
   }
-;
 }
