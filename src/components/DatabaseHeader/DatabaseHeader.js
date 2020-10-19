@@ -32,10 +32,10 @@ const DatabaseHeader = ({history}) => {
                             Nowe dziecko
                         </Link>
                     </div>
-                    <button className="database__header__item"
+                    <div className="database__header__item"
                             onClick={() => logout()}>
                         Wyloguj
-                    </button>
+                    </div>
                 </div>
             </div>
         </header>
