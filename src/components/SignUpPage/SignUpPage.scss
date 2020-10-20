@@ -9,21 +9,21 @@
   margin-left: 10%;
 }
 
-.signup__form {
+.signUp_main {
   label {
     justify-self: flex-start;
     display: flex;
     justify-content: flex-start;
   }
 
-  .signup__error {
+  .signUp__error {
     @extend .signin__error;
   }
 
   @extend .login__form;
   grid-template-rows: repeat(5, 1fr);
 
-  .signup__form__id {
+  .signUp__form__id {
     grid-row: 2/3;
 
     .login__form__id__icon {
@@ -32,20 +32,20 @@
     }
   }
 
-  .signup__form__email {
+  .signUp__form__email {
     grid-row: 3/4
   }
 
-  .signup__form__password {
+  .signUp__form__password {
     grid-row: 4/5;
   }
 
-  .signup__form__password__repeat {
+  .signUp__form__password__repeat {
     grid-row: 5/6;
   }
 }
 
-.signup__form__link {
+.signUp__form__link {
   @extend .login__form__signUp;
   grid-row: 6/7 !important;
 
@@ -55,7 +55,7 @@
   }
 }
 
-.signup__submit {
+.signUp__submit {
   @extend .login__submit;
   grid-row: 7/8 !important;
 }
