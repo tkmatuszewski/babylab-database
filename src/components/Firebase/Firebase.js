@@ -1,6 +1,6 @@
-import * as firebase from "firebase/app";
+import app from 'firebase/app';
 
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyDF_oTvC5mwId5ffyHe2Cqt2asBW63_Tps",
     authDomain: "babylab-database.firebaseapp.com",
     databaseURL: "https://babylab-database.firebaseio.com",
@@ -11,6 +11,6 @@ const firebaseConfig = {
     measurementId: "G-7FQQVTXP1Z"
 };
 
-export const app = firebase.initializeApp(firebaseConfig);
+const firebaseApp = app.initializeApp(config)
 
-// export default app
+export default firebaseApp
