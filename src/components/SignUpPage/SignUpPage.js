@@ -6,7 +6,7 @@ const SignUpPage = () => {
     return (
         <div className="main">
             <div className="modal">
-                <div className="modal__signUp__bg" />
+                <div className="modal__signUp__image" />
                 <div className="modal__logo__container">
                     <div className="babylab__logo" />
                     <span className="decor" />
