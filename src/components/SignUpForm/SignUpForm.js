@@ -34,10 +34,10 @@ const SignUpForm = ({history}) => {
     const isInvalid = password !== passwordRep
 
     return (
-        <form className="signup__form"
+        <form className="signUp_main"
               onSubmit={handleSubmit}>
-            <span className="signup__error">{errorMsg}</span>
-            <label htmlFor="" className="signup__form__id">
+            <span className="signUp__error">{errorMsg}</span>
+            <label htmlFor="" className="signUp__form__id">
                 <span className="login__form__id__icon" />
                 <input name="userName"
                        type="text"
@@ -47,7 +47,7 @@ const SignUpForm = ({history}) => {
                        required
                        placeholder="Nazwa użytkownika" />
             </label>
-            <label htmlFor="" className="signup__form__email">
+            <label htmlFor="" className="signUp__form__email">
                 <span className="login__form__email__icon" />
                 <input name="email"
                        type="email"
@@ -56,7 +56,7 @@ const SignUpForm = ({history}) => {
                        required
                        placeholder="Email" />
             </label>
-            <label htmlFor="" className="signup__form__password">
+            <label htmlFor="" className="signUp__form__password">
                 <span className="login__form__password__icon" />
                 <input name="password"
                        type="password"
@@ -65,7 +65,7 @@ const SignUpForm = ({history}) => {
                        required
                        placeholder="Hasło" />
             </label>
-            <label htmlFor="" className="signup__form__password__repeat">
+            <label htmlFor="" className="signUp__form__password__repeat">
                 <span className="login__form__password__icon" />
                 <input name="passwordRep"
                        type="password"
@@ -74,10 +74,10 @@ const SignUpForm = ({history}) => {
                        required
                        placeholder="Powtórz hasło" />
             </label>
-            <p className="signup__form__link">Masz już swoje konto?
+            <p className="signUp__form__link">Masz już swoje konto?
                 <Link to={signIn}>Zaloguj się</Link>
             </p>
-            <button className="signup__submit"
+            <button className="signUp__submit"
                     type="submit"
                     disabled={isInvalid}>Zarejestruj
             </button>
