@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {BrowserRouter as Router} from "react-router-dom";
 import {example1, example2, home, newParticipantForm, projects} from "../../routes";
-import NavigationItem from "../Navigationtem/NavigationItem";
+import NavigationItem from "../NavigationItem/NavigationItem";
 
 const classNames = require('classnames');
 
@@ -36,7 +35,6 @@ const Navigation = ({children}) => {
             </div>
             <div className="database__nav__container">
                 <nav className={menu}>
-                    <Router>
                         <NavigationItem name={"Home"}
                                         value={home}
                                         closeNav={setShowMenu}
@@ -57,7 +55,6 @@ const Navigation = ({children}) => {
                                         value={example2}
                                         closeNav={setShowMenu}
                         />
-                    </Router>
                 </nav>
             </div>
             <div className={page}>

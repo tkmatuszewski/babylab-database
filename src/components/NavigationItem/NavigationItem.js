@@ -1,21 +1,19 @@
 import React from "react";
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const NavigationItem = ({name, value, history, closeNav}) => {
-
-    const clickHandler = (value) => {
-        closeNav(false)
-        return  history.replace(value)
-    }
+const NavigationItem = ({name, value, closeNav}) => {
 
     return (
         <li className="navigationItem"
             id={name}>
-            <Link to={value} onClick={ ()=> {clickHandler(value)}}>
+            <Link to={value}
+                  onClick={() => {
+                      closeNav(false)
+                  }}>
                 {name}
             </Link>
         </li>
     )
 }
 
-export default withRouter(NavigationItem);
+export default NavigationItem;

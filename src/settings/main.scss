@@ -2,6 +2,7 @@
 @import "colors";
 @import "fonts";
 @import "mixins";
+@import "animations";
 @import "../components/Loader/Loader";
 @import "../components/SignUpPage/SignUpPage";
 @import "../components/SignInPage/SignInPage";
@@ -11,9 +12,9 @@
 @import "../components/AddNewForm/AddNewForm";
 @import "../components/Projects/Projects";
 @import "../components/MeetingsMarkers/MeetingsMarkers";
-@import "../components/ProjectAddNewModal/ProjectsAddNewModal";
+@import "../components/ProjectsNew/ProjectsNew";
 @import "../components/ProjectsItem/ProjectsItem";
 @import "../components/DatabaseData/DatabaseData";
 @import "../components/DataRow/DataRow";
-@import "../components/DataRowDetailed/DataRowDetailed";
-@import "../components/Navigationtem/MenuItem";
+//@import "../components/DataRowDetailed/DataRowDetailed";
+@import "../components/NavigationItem/NavigationItem";
