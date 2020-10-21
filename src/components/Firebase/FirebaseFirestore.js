@@ -1,4 +1,4 @@
 import 'firebase/firestore';
-import {app} from "./Firebase";
+import firebaseApp from "./Firebase";
 
-export const db = app.firestore();
+export const db = firebaseApp.firestore();
