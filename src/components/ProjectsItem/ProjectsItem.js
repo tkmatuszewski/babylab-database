@@ -1,7 +1,7 @@
 import React from "react";
 import MeetingsMarkers from "../MeetingsMarkers/MeetingsMarkers";
 import {db} from "../Firebase/FirebaseFirestore";
-import NewProjectModal from "../NewProjectModal/NewProjectModal";
+import ProjectsAddNewModal from "../ProjectAddNewModal/ProjectsAddNewModal";
 
 const ProjectItem = ({id, data}) => {
 
@@ -14,7 +14,7 @@ const ProjectItem = ({id, data}) => {
     }
 
     const editProject = (id, data) => {
-        return <NewProjectModal data={data} />
+        return <ProjectsAddNewModal data={data} />
     }
 
     const deleteProject = (id) => {
@@ -26,28 +26,28 @@ const ProjectItem = ({id, data}) => {
     }
 
     return (
-        <li className="projects__item" data-id={id}>
-            <div className="projects__item__container">
+        <li className="projectsItem" data-id={id}>
+            <div className="projectsItem__container">
                 <h4>{data.projectName}</h4>
-                <p className="projects__item__container__description">
+                <p className="projectsItem__container__description">
                     <strong>O projekcie</strong>
                     <span>{data.projectDescription}</span>
                 </p>
-                <div className= "projects__item__container__numbers">
+                <div className="projectsItem__container__numbers">
                 <span
-                    className="projects__item__container__participants">Dzieci w projekcie
-                    : {data.projectParticipants}</span>
+                    className="projectsItem__container__participants">Dzieci w projekcie
+                    : {data.projectParticipants.length}</span>
                     <span
-                        className="projects__item__container__meetings">Liczba spotkań w projekcie
+                        className="projectsItem__container__meetings">Liczba spotkań w projekcie
                     :
-                    <ul className="projects__item__container__meetings__list">
+                    <ul className="projectsItem__container__meetings__list">
                         <MeetingsMarkers number={generateArray(data.projectMeetings)} />
                     </ul>
                 </span>
                 </div>
-                <ul className="projects__item__container__menu">
-                    <li className="projects__container__list__element__menu__element">Edytuj</li>
-                    <li className="projects__container__list__element__menu__element"
+                <ul className="projectsItem__container__menu">
+                    <li className="projectsItem__container__menu__element">Edytuj</li>
+                    <li className="projectsItem__container__menu__element"
                         onClick={() => {
                             deleteProject(id)
                         }}>Usuń
