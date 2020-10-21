@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import NewProjectModal from "../NewProjectModal/NewProjectModal";
 import ProjectItem from "../ProjectsItem/ProjectsItem";
 import {db} from "../Firebase/FirebaseFirestore";
+import {Link} from "react-router-dom";
+import {projectsAddNew} from "../../routes";
 
 const Projects = () => {
 
@@ -55,11 +57,13 @@ const Projects = () => {
                             <p className="projects__side__container__content">Wszystkie projekty, które obecnie
                                 realizujemy</p>
                         </div>
-                        <button className="projects__side__container__button"
-                                onClick={() => {
-                                    handleClick(newProject)
-                                }}>{buttonName}
-                        </button>
+                        <Link to={projectsAddNew}>
+                            <button className="projects__side__container__button">
+                                    {/*// onClick={() => {*/}
+                                    {/*//     handleClick(newProject)*/}
+                                    {buttonName}
+                            </button>
+                        </Link>
                     </div>
                     <div className="projects__list">
                         <span className="projects__list__info">Przewiń
