@@ -1,7 +1,9 @@
+@import "colors";
+
 @mixin icon {
   width: 40px;
   height: 40px;
-  background-size: 50%;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -9,4 +11,48 @@
 @mixin container__main {
   width: 90%;
   height: 100%;
+}
+
+@mixin input {
+  width: 100%;
+  height: 80%;
+  font-size: 18px;
+  display: block;
+  background-color: transparent;
+  color: black;
+  padding: 15px;
+  transition: 0.5s;
+}
+
+@mixin label {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 75%;
+  align-self: center;
+  font-size: 18px;
+  font-weight: 600;
+  text-indent: 5px;
+  display: block;
+  padding: 5px;
+  transition: 0.5s;
+  color: $darkCold;
+  border: 0.25px solid lighten(black, 60);
+
+  &:focus-within {
+    font-size: 15px;
+    border: 0.25px solid $darkCold;
+  }
+}
+
+@mixin modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 2px 12px 20px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
 }
