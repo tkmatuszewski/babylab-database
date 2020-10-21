@@ -23,7 +23,6 @@ const ProjectsNew = ({history}) => {
         }).then(() => {
             response = "Document successfully written!"
             history.replace(projects)
-
         }).catch((error) => {
             response = "Error writing document: " + error
         });
