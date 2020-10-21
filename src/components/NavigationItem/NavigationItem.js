@@ -1,6 +1,6 @@
 import React from "react";
 
-const MenuItem = ({handleMenuOption, name}) => {
+const NavigationItem = ({handleMenuOption, name}) => {
     return <li className="database__main__control__item"
                id={name}
                onClick={()=> handleMenuOption(name)}
@@ -8,4 +8,4 @@ const MenuItem = ({handleMenuOption, name}) => {
     </li>
 }
 
-export default MenuItem
+export default NavigationItem

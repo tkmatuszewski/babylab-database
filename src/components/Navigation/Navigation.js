@@ -1,9 +1,9 @@
 import React from "react";
 
-const DatabaseMenu =()=>{
+const Navigation =()=>{
     return (
         <button>Menu</button>
     )
 }
 
-export default DatabaseMenu;
+export default Navigation;
