@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {db} from "../Firebase/FirebaseFirestore";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {projects} from "../../routes";
 
-const ProjectsAddNewModal = ({history}) => {
+
+const ProjectsNew = ({history}) => {
 
     // const [errorMessage, setErrorMessage] = useState("")
     const [handleProjectName, setProjectName] = useState("")
@@ -21,7 +22,8 @@ const ProjectsAddNewModal = ({history}) => {
             projectParticipants: []
         }).then(() => {
             response = "Document successfully written!"
-            return  history.replace(projects)
+            history.replace(projects)
+
         }).catch((error) => {
             response = "Error writing document: " + error
         });
@@ -76,14 +78,8 @@ const ProjectsAddNewModal = ({history}) => {
                                 onChange={e => setProjectMeetings(e.target.value)}
                                 placeholder="Podaj liczbę" />
                         </label>
-                        <Link to={projects}>
-                            <button
-                                type="button"
-                                className="new__project__modal__cancel"
-                                onClick={() => {
-                                    props.handleClick(true)
-                                }}>Rezygnuj
-                            </button>
+                        <Link to={projects} className="new__project__modal__cancel">
+                            Rezygnuj
                         </Link>
                         <button
                             type="submit"
@@ -95,5 +91,4 @@ const ProjectsAddNewModal = ({history}) => {
         </div>
     )
 }
-
-export default ProjectsAddNewModal
+export default withRouter(ProjectsNew)
