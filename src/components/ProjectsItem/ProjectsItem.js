@@ -1,9 +1,8 @@
 import React from "react";
 import MeetingsMarkers from "../MeetingsMarkers/MeetingsMarkers";
 import {db} from "../Firebase/FirebaseFirestore";
-import ProjectsAddNewModal from "../ProjectAddNewModal/ProjectsAddNewModal";
 
-const ProjectItem = ({id, data}) => {
+const ProjectsItem = ({id, data}) => {
 
     const generateArray = (number) => {
         let marks = [];
@@ -13,9 +12,8 @@ const ProjectItem = ({id, data}) => {
         return marks
     }
 
-    const editProject = (id, data) => {
-        return <ProjectsAddNewModal data={data} />
-    }
+    // const editProject = (id, data) => {
+    // }
 
     const deleteProject = (id) => {
         db.collection("projects").doc(id).delete().then(() => {
@@ -58,4 +56,4 @@ const ProjectItem = ({id, data}) => {
     )
 }
 
-export default ProjectItem
+export default ProjectsItem
