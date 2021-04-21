@@ -26,6 +26,7 @@
 }
 
 .projects__side__container__content{
+  font-size: 1.2em;
   line-height: 1.5em;
 }
 
@@ -35,6 +36,8 @@
   font-size: 1.3em;
   font-weight: bold;
   background-color: white;
+  text-decoration: none;
+  text-align: center;
   border: 0.25px solid $darkCold;
   cursor: pointer;
   color: $darkCold;
@@ -83,13 +86,13 @@
   overflow-y: hidden;
 
   &::-webkit-scrollbar {
-    margin-top: 2em;
-    height: 1px;
+    height: 10px;
     cursor: pointer;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $darkCold;
-    outline: 20px solid $darkCold;
+    background-color: rgba($darkCold, 0.6);
+    outline: 50px solid $darkCold;
+    border-radius: 20px;
   }
 }

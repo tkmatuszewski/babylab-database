@@ -1,6 +1,6 @@
-import * as firebase from "firebase/app";
+import app from 'firebase/app';
 
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyDF_oTvC5mwId5ffyHe2Cqt2asBW63_Tps",
     authDomain: "babylab-database.firebaseapp.com",
     databaseURL: "https://babylab-database.firebaseio.com",
@@ -11,5 +11,32 @@ const firebaseConfig = {
     measurementId: "G-7FQQVTXP1Z"
 };
 
-export const app = firebase.initializeApp(firebaseConfig);
+const firebaseApp = app.initializeApp(config)
 
+export default firebaseApp
+
+
+// class Firebase {
+//     constructor() {
+//         app.initializeApp(config);
+//
+//         this.auth = app.auth();
+//         this.db = app.firestore();
+//     }
+//
+//     createNewUser = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
+//
+//     signIn = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
+//
+//     resetPassword = (email) => this.auth.sendPasswordResetEmail(email)
+//
+//     updatePassword = email => this.auth.sendPasswordResetEmail(email);
+//
+//     signOut= () => this.auth.signOut();
+//
+//     user = uid => this.db.ref(`users/${uid}`);
+//
+//     users = () => this.db.ref('users');
+// }
+//
+// export default Firebase

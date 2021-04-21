@@ -1,31 +1,18 @@
 import React, {useEffect, useState} from "react";
-import NewProjectModal from "../NewProjectModal/NewProjectModal";
 import ProjectItem from "../ProjectsItem/ProjectsItem";
 import {db} from "../Firebase/FirebaseFirestore";
+import DatabaseHeader from "../DatabaseHeader/DatabaseHeader";
+import Navigation from "../Navigation/Navigation";
+import {Link} from "react-router-dom";
+import {projectsNew} from "../../routes";
 
 const Projects = () => {
 
     const [projectData, getProjectData] = useState([])
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const [newProject, setNewProject] = useState(false)
-    const [modalTitle, setModalTitle] = useState("Projekty")
-    const [buttonName, setButtonName] = useState("Nowy")
-
-    const handleClick = (boolean) => {
-
-        let title = null
-        let button = null
-        newProject ? title = "Projekty" : title = "Nowy Projekt"
-        newProject ? button = "Dodaj" : button = "Powrót"
-
-        setNewProject(!boolean)
-        setModalTitle(title)
-        setButtonName(button)
-    }
 
     useEffect(() => {
-
             setLoading(true)
             const unsubscribe =
                 db
@@ -46,40 +33,42 @@ const Projects = () => {
     )
 
     return (
-        <div className="projects__main">
-            {newProject ? <NewProjectModal handleClick={handleClick} /> :
-                <div className="projects__main__container">
-                    <div className="projects__side__container">
-                        <div className="projects__side__container__text">
-                            <h3 className="projects__side__container__title">{modalTitle}</h3>
-                            <p className="projects__side__container__content">Wszystkie projekty, które obecnie
-                                realizujemy</p>
+        <>
+            <DatabaseHeader />
+            <Navigation>
+                <div className="projects__main">
+                    <div className="projects__main__container">
+                        <div className="projects__side__container">
+                            <div className="projects__side__container__text">
+                                <h3 className="projects__side__container__title">Projekty</h3>
+                                <p className="projects__side__container__content">Wszystkie projekty, które obecnie
+                                    realizujemy</p>
+                            </div>
+                            <Link to={projectsNew} className="projects__side__container__button">
+                                Nowy
+                            </Link>
                         </div>
-                        <button className="projects__side__container__button"
-                                onClick={() => {
-                                    handleClick(newProject)
-                                }}>{buttonName}
-                        </button>
-                    </div>
-                    <div className="projects__list">
-                        <span className="projects__list__info">Przewiń
+                        <div className="projects__list">
+                        <span className="projects__list__info">Przewiń suwakiem
                             <strong />
                         </span>
-                        <ul className="projects__list__container">
-                            {loading ?
-                                <div className="loader">
-                                    <strong>Loading</strong>
-                                </div>
-                                : projectData.map((project, index) => {
-                                    return <ProjectItem data={project.data}
-                                                        id={project.id}
-                                                        key={index} />
-                                })
-                            }
-                        </ul>
+                            <ul className="projects__list__container">
+                                {loading ?
+                                    <div className="loader">
+                                        <strong>Loading</strong>
+                                    </div>
+                                    : projectData.map((project, index) => {
+                                        return <ProjectItem data={project.data}
+                                                            id={project.id}
+                                                            key={index} />
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
-                </div>}
-        </div>
+                </div>
+            </Navigation>
+        </>
     )
 }
 
