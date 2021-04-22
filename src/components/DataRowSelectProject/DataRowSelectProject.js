@@ -43,7 +43,6 @@ const DataRowSelectProject = ({participant, close, docId}) => {
     )
 
     return (
-        // <div className="dataRowSelectProject__bg">
             <div className="dataRowSelectProject">
                 <button className="dataRowSelectProject__close"
                         onClick={() => close(false)} />
@@ -75,7 +74,6 @@ const DataRowSelectProject = ({participant, close, docId}) => {
                         onClick={handleSubmit}>Dodaj
                 </button>
             </div>
-        // </div>
     )
 }
 
