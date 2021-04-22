@@ -1,23 +1,24 @@
 import React, {useState} from "react";
 
-const SearchBar = ({value, filterUpdate, ageMin, ageMax, minAgeFilterCondition, maxAgeFilterCondition, handleFilter}) => {
+const SearchBar = ({value, filterUpdate, handleFilter}) => {
 
     const [filter, setFilter] = useState(false)
     const [outsider, setOutsider] = useState(false)
     const [ageMin, setAgeMin] = useState("")
     const [ageMax, setAgeMax] = useState("")
-    // const [ageMax, setAgeMax] = useState("")
 
     const handleChange = e => {
         return filterUpdate(e.target.value)
     }
 
-    const handleMinAge= e => {
-        return minAgeFilterCondition(e.target.value)
+    const handleUninvolved = (state)=> {
+        return setOutsider(!state)
     }
 
-    const handleMaxAge = e  => {
-        return maxAgeFilterCondition(e.target.value)
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        return handleFilter(ageMin, ageMax)
     }
 
     return (
@@ -34,19 +35,18 @@ const SearchBar = ({value, filterUpdate, ageMin, ageMax, minAgeFilterCondition, 
                 </label>
                 {filter ?
                     <form className="searchBar__filter__options" 
-                    // onSubmit={handleFilter(ageMin,ageMax,outsider)
-                    }>Wiek
+                    onSubmit={handleSubmit}> Wiek
                         <label htmlFor="">Od
-                            <input type="text" value={ageMin} onChange={e=>setAgeMin(e.target.value)} />
+                            <input type="text" value={ageMin} onChange={(e)=> setAgeMin(e.target.value)} />
                         </label>
                         <label htmlFor="">Do
-                            <input type="text" value={ageMax} onChange={e=>setAgeMin(e.target.value)} />
+                            <input type="text" value={ageMax}  onChange={(e)=> setAgeMax(e.target.value)} />
                         </label>
-                        <label>
-                            <input type="checkbox" onClick={setOutsider(!outsider)}>Niezaangażowany</input>
-                        </label>
-                        <button type="reset">Resetuj</button>
-                        <button type="submit">Filtruj</button>
+                        {/* <label> */}
+                            {/* <input type="checkbox" onClick={()=>handleUninvolved(outsider)}>Niezaangażowany</input> */}
+                        {/* </label> */}
+                        <button className = "searchBar__button filter" type="reset">Resetuj</button>
+                        <button className = "searchBar__button filter submit"type="submit">Filtruj</button>
                     </form>
                     :
                     null

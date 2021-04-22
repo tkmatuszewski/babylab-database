@@ -59,6 +59,20 @@ display: flex;
   }
 }
 
+.searchBar__button.filter{
+  width: 10%;
+} 
+
+.searchBar__button.submit{
+  background: darken($darkWarm, 20);
+  border: 0.25px solid darken($darkWarm, 20);
+  
+  &:hover {
+    color:darken($darkWarm, 20);
+    background: white;
+}
+} 
+
 .searchBar__filter__options {
   display: flex;
   justify-content: center;

@@ -47,44 +47,19 @@ const DatabaseData = () => {
         const filtered = dataDefault.filter(child => {
             console.log(dataDefault)
             const childData = child.data.data()
-            // const childAge = child.age
            
             return (childData.childName.toLowerCase().includes(searchTerm.toLowerCase()) || childData.childSurname.toLowerCase().includes(searchTerm.toLowerCase())) 
-            // && ageFilterCondition(ageMin, ageMax, childAge)
         })
         setFilterValue(searchTerm)
         setData(filtered);
     }
 
-    // const minAgeFilterCondition = (age) => {
-    //     const filtered = dataDefault.filter(child => {
-    //         return(Number(child.age) >= Number(age)
-    //     )})
-    //     setAgeMin(age)
-    //     return setData(filtered);
-    // }
-
-    // const maxAgeFilterCondition = (age) => {
-    //     const filtered = dataDefault.filter(child => {
-    //         return(Number(child.age) <= Number(age)
-    //     )})
-    //     setAgeMax(age)
-    //     return setData(filtered);
-    // }
-
-    const age = "12"
-    const max = ageMax 
-    const min = ageMin
-
-
-    const handleFilter = (ageMin, ageMax, participant) => {
-
-        const condition = Number(ageMin) <= Number(ageMax) && Number(age) >= Number(min) && participant
+    const handleFilter = (ageMin, ageMax) => {
 
         const filtered = dataDefault.filter(child => {
-            return(condition)
+            return Number(child.age) <= Number(ageMax) && Number(child.age) >= Number(ageMin)
         })
-        // setAgeMax(age)
+     
         return setData(filtered);
     }
 
