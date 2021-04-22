@@ -1,0 +1,15 @@
+@import "../../settings/colors";
+
+.dataRowAddToProject {
+  width: 35px;
+  height: 35px;
+  background: url("../../assets/add__button.svg") no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

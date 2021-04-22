@@ -1,0 +1,59 @@
+@import "../../settings/mixins";
+
+// .meetingDateForm__bg {
+//   transition: 0.5s;
+//   @extend .dataRowSelectProject__bg
+// }
+
+.meetingDateForm {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35vw;
+  height: 40vh;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 3px #6e6e6e;
+  display: grid;
+  grid-template-rows: 50px 50px 1fr 1fr;
+  z-index: 100;
+
+  label {
+    grid-row: 3/4;
+    width: 75%;
+    justify-self: center;
+    align-self: center;
+  }
+
+  input {
+    @include input;
+  }
+}
+
+.meetingDateForm__close {
+  @extend .dataRowSelectProject__close
+}
+
+.meetingDateForm__subheader {
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  grid-row: 2/3;
+  justify-self: center;
+  align-self: center;
+}
+
+.meetingDateForm__button {
+  grid-row: 4/5;
+  width: 33%;
+  height: 50%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: #f7a823;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  justify-self: center;
+}

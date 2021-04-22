@@ -2,82 +2,69 @@
 
 .database__header {
   height: 8vh;
-  background-color: $darkCold;
+  // width: 100%;
   display: flex;
-  justify-content: center;
+  background-color: $headerColor;
+
+  a {
+    text-decoration: none;
+  }
 }
 
-.database__container {
-  width: 95%;
+.database__header__container {
+  width: 90%;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
+  margin-right: 5%;
 }
 
 .database__logo {
-  grid-column: 1/2;
   font-family: 'Work Sans', sans-serif;
   font-size: 35px;
   font-weight: 100;
-  color: darken(white,10);
-  width: 250px;
+  color: darken(white, 10);
   text-align: center;
+
   strong {
     font-weight: bold;
   }
 }
 
-.database__search__label {
-  grid-column: 2/3;
-  min-width: 100%;
+.database__header__menu {
+  width: 25%;
+  height: 100%;
   display: flex;
-  background-color: white;
-  border-radius: 10px;
-}
+  align-items: center;
+  justify-content: space-between;
 
-.database__search__icon {
-  width: 40px;
-  height: 40px;
-  background: url("../../assets/search.svg") no-repeat center;
-  border: none;
-}
-
-.database__search__input {
-  width: 90%;
-}
-
-.database__search__filter {
-  grid-column: 3/4;
-  background: url("../../assets/filter.svg") no-repeat center;
-  height: 25px;
-  width: 25px;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  opacity: 0.7;
-  transition: 0.5s;
-  &:hover {
-    opacity: 1;
+  a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
   }
 }
 
-.database__logout {
-  grid-column: 5/6;
-  width: 30%;
-  justify-self: right;
+.database__header__item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   font-family: 'Work Sans', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   background: transparent;
   color: white;
   opacity: 0.5;
   cursor: pointer;
-  transition: 1s;
-  padding: 10px;
+  border-bottom: 5px solid transparent;
+  transition: 0.5s;
+
   &:hover {
     opacity: 1;
-    border-bottom: 0.25px solid white;
+    border-bottom: 5px solid $lightCold;
   }
 }

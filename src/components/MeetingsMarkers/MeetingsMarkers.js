@@ -1,8 +1,8 @@
 import React from "react";
 
-const MeetingsMarkers = (props) => {
+const MeetingsMarkers = ({number}) => {
 
-    return props.number.map((index) => <li key={index} className="meetingsMarker"/>);
+    return number.map((index) => <li key={index} className="meetingsMarker"/>);
 }
 
 

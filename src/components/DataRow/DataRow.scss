@@ -1,0 +1,83 @@
+@import "../../settings/colors";
+@import "../../settings/dataColumnWidth";
+
+.databaseData__list__element {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.5s;
+  &:hover {
+    background:rgba($lightWarm, $alpha: 0.5);
+    transition: 0.5s;
+  }
+
+
+  &:nth-child(odd) {
+    background: rgba($darkCold, 0.4);
+    &:hover {
+      background:rgba($lightWarm, $alpha: 0.5);
+      transition: 0.5s;
+    }
+  }
+}
+
+.databaseData__list__element > div {
+  text-align: center;
+}
+
+.databaseData__list__element > svg {
+  width: $svgWidth;
+}
+
+.databaseData__list__element__id {
+  width: $idWidth;
+}
+
+.databaseData__list__element__name {
+  width: $nameWidth;
+}
+
+.databaseData__list__element__surname {
+  width: $surnameWidth;
+}
+
+.databaseData__list__element__id, .databaseData__list__element__name, .databaseData__list__element__surname {
+  text-align: left;
+}
+
+
+.databaseData__list__element__age {
+  width: $ageWidth;
+}
+
+.databaseData__list__element__projects {
+  width: $projectsWidth;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.databaseData__list__element__projects__container {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.databaseData__list__element__more {
+  width: $detailsWidth;
+  text-align: center;
+  transition: 0.5s;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+  }
+}

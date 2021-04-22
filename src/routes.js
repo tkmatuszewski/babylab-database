@@ -1,0 +1,10 @@
+export const signIn = "/signin"
+export const signUp = "/signup"
+export const home = "/"
+export const projects = "/projects"
+export const projectsNew = "/projects/new"
+export const newParticipantForm = "/new"
+export const resetPassword = "/reset"
+export const stats = "/stats"
+export const example2 = "/example2"
+

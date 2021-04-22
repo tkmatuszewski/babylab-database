@@ -1,0 +1,153 @@
+@import "../../settings/colors";
+@import "../../settings/mixins";
+@import "../../settings/fonts";
+
+
+.navigation {
+  width: 5%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation.active {
+  z-index: 20;
+}
+
+.database__hamburger {
+  height: 50%;
+  width: 50%;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  cursor: pointer;
+  z-index: 100;
+  background: transparent;
+  border: none;
+  transition: 0.5s;
+
+  span {
+    display: block;
+    background-color: darken(white, 20);
+    height: 1px;
+    align-self: center;
+    z-index: 100;
+  }
+
+  span:nth-of-type(1) {
+    grid-row: 1/2;
+    width: 100%;
+  }
+
+  span:nth-of-type(2) {
+    grid-row: 2/3;
+    width: 75%;
+  }
+
+  span:nth-of-type(3) {
+    grid-row: 3/4;
+    width: 100%;
+  }
+}
+
+.database__hamburger.active {
+  transform: translateX(25vw)translateX(-50%);
+  height: 8vh;
+  border-radius: 0 40% 40% 0;
+  background: darken($darkWarm, 20);
+  cursor: pointer;
+
+  span {
+    background-color: white;
+    width: 80%;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    justify-self: center;
+  }
+
+  span:nth-of-type(2) {
+    display: none;
+  }
+
+  span:nth-of-type(1) {
+    transform: rotate(45deg);
+  }
+
+  span:nth-of-type(3) {
+    transform: rotate(-45deg);
+  }
+}
+
+.navigation__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25vw;
+  background: linear-gradient(to bottom right, $darkCold, lighten($darkCold, 20));
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.navigation__container.active {
+  transform: translateX(0);
+  z-index: 99;
+
+  .navigation__list {
+    border-left: 10px solid $lightWarm;
+  }
+}
+
+.navigationMsg {
+  height: 30%;
+  display: flex;
+  margin-left: 10%;
+  align-items: center;
+
+  .navigationMsg__title {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5vh;
+
+  }
+}
+
+.navigation__list {
+  height: 60%;
+  width: 85%;
+  margin-left: 10%;
+  margin-top: auto;
+  padding: 2%;
+  background: rgba($color: #000000, $alpha: 0.7);
+  list-style-type: none;
+
+  li {
+    margin-left: 10%;
+    margin-top: 5%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.database__page {
+  background: linear-gradient(to bottom, white 5%, darken(white, 10));
+  clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+  transition: 0.4s;
+  width: 100%;
+  height: 92vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.database__page.active {
+  clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+  transform: translateX(-2%) scale(0.75);
+  transform-origin: right center;
+  transition: 0.4s;
+}
