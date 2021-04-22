@@ -2,6 +2,7 @@ import React from "react";
 import {signOut} from "../Firebase/FirebaseAuth";
 import {home, newParticipantForm, projects} from "../../routes";
 import {Link} from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
 const DatabaseHeader = ({history}) => {
 
@@ -12,6 +13,7 @@ const DatabaseHeader = ({history}) => {
 
     return (
         <header className="database__header">
+            <Navigation />
             <div className="database__header__container">
                 <Link to={home}>
                     <h2 className="database__logo"><strong>Data</strong>base</h2>

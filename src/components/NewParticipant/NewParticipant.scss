@@ -1,0 +1,113 @@
+@import "../../settings/fonts";
+@import "../../settings/colors";
+@import "../../settings/mixins";
+
+.newParticipant__bg {
+  width: 100%;
+  height: 92vh;
+  background-color: $darkCold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.newParticipant__modal {
+  @include modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newParticipant__container {
+  width: 75%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.newParticipant__import {
+  grid-row: 2/3;
+  width: 60%;
+  height: 30%;
+  border: 0.25px solid $darkCold;
+  background-color: transparent;
+  color: $darkCold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newParticipant__cancel {
+  @include button();
+  grid-row: 3/4;
+  grid-column: 1/2;
+  background-color: $darkCold;
+  justify-self: flex-start;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+}
+
+.newParticipant__right {
+  width: 60%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.newParticipant__button.parent {
+  width: 100%;
+  grid-row: 2/3;
+  display: flex;
+  align-self: end;
+  justify-self: end;
+  justify-content: flex-end;
+}
+
+.newParticipant__button {
+  @include button();
+  background: $lightWarm;
+}
+
+.newParticipant__progress {
+  width: 25%;
+  height: 100%;
+  justify-self: center;
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: darken($darkCold, 20);
+  color: white;
+
+  .newParticipant__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 200;
+    color: darken(white, 20);
+  }
+
+  span {
+    display: block;
+    border: 0.25px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto 5px auto;
+  }
+
+  div {
+    font-size: 1.3em;
+  }
+
+  .active {
+    color: $lightWarm;
+    transition: 0.5s;
+
+    span {
+      border: 0.25px solid $lightWarm;
+    }
+  }
+}

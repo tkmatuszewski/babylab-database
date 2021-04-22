@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {db} from "../Firebase/FirebaseFirestore";
 import {Link, withRouter} from "react-router-dom";
 import {projects} from "../../routes";
+import DatabaseHeader from "../DatabaseHeader/DatabaseHeader";
 
 
 const ProjectsNew = ({history}) => {
@@ -30,6 +31,8 @@ const ProjectsNew = ({history}) => {
     }
 
     return (
+        <>
+        <DatabaseHeader />
         <div className="new__project__modal__bg">
             <div className="new__project__modal"
                  onSubmit={e => {
@@ -37,7 +40,7 @@ const ProjectsNew = ({history}) => {
                  }}>
                 <div className="new__project__modal__image" />
                 <div className="new__project__modal__container">
-                    <h3 className={"new__project__modal__title"}>Nowy Projekt</h3>
+                    <h3 className={"new__project__modal__title"}>Projekt</h3>
                     <form className="new__project__modal__form">
                         <label htmlFor=""
                                className="new__project__modal__container__name">Nazwa Projektu
@@ -88,6 +91,7 @@ const ProjectsNew = ({history}) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default withRouter(ProjectsNew)

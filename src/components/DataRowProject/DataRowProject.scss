@@ -1,0 +1,22 @@
+.dataRowProject {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: flex-start;
+  margin: 1px 0;
+}
+
+.detailed {
+  margin-bottom: 3em;
+}
+
+.dataRowProject__name {
+  width: 30%;
+  text-align: left;
+}
+
+.dataRowProject__meetings {
+  display: flex;
+}
+
+

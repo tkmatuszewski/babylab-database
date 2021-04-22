@@ -1,0 +1,69 @@
+@import "../../settings/colors";
+
+.dataRowMeeting__detailed {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  position: relative;
+}
+
+.dataRowMeeting__detailed:not(:last-of-type) {
+  &:after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -60px;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 1px;
+    background-color: black;
+  }
+}
+
+.dataRowMeeting {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 0.25px solid lighten(black, 20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  transition: 0.5s;
+
+  &:hover {
+    border: 0.25px solid $darkCold;
+    background-color: $darkCold;
+    color: white;
+  }
+}
+
+.dataRowMeeting.detailed {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  cursor: unset;
+
+  &:hover {
+    transform: unset;
+  }
+}
+
+.checked {
+  background: black;
+  color: white;
+  transition: 1s;
+
+  span {
+    width: unset;
+  }
+}
+
+.dataRowMeeting__date {
+  height: 1em;
+  font-size: 16px;
+  margin-top: 0.5em;
+}

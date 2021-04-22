@@ -1,0 +1,91 @@
+@import "../../settings/dataColumnWidth";
+@import "../../settings/colors";
+
+.dataRowMenu {
+  width: $menuWidth;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dataRowMenu__icon {
+  display: flex;
+  height: 100%;
+  transition: 0.5s;
+  opacity: 0.5;
+
+  span {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+    background: lighten(black, 40);
+    margin: 5%;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.menuActive {
+  width: 45px;
+  height: 46px;
+  border-radius: 10px 0 0 10px;
+  border: 0.25px solid rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  transition: 0.5s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: none;
+  }
+
+  span:first-of-type {
+    transition: 0.5s;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("../../assets/close.svg") center no-repeat;
+    background-size: contain;
+  }
+}
+
+.dataRowMenu__options {
+  width: 50%;
+  list-style-type: none;
+  background-color: rgba(black, 0.7);
+  border-radius: 0 10px 10px 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+    text-align: center;
+    color: darken(white, 20);
+  }
+
+  .dataRowMenu__indicator {
+    display: block;
+    width: 10%;;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $lightWarm;
+    }
+  }
+
+  .dataRowMenu__name {
+    display: block;
+    width: 90%;
+  }
+
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}

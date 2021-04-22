@@ -1,0 +1,53 @@
+@import "../../settings/colors";
+
+.newParticipant__summary__subtitle {
+  grid-row: 1/2;
+  font-size: 2.5em;
+  color: lighten(black, 30);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newParticipant__summary__child {
+  grid-row: 2/3;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newParticipant__summary__label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.newParticipant__summary__parent {
+  grid-row: 3/4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newParticipant__summary__info {
+  display: block;
+  font-size: 16px;
+  line-height: 1.2;
+  color: lighten(black, 50);
+}
+
+.newParticipant__summary__data {
+  display: block;
+  line-height: 24px;
+  margin-left: 1em;
+}
+.newParticipant__summary__buttons {
+  grid-row: 4/5;
+  grid-column: 2/3;
+  display: flex;
+}
+
+.newParticipant__button.submit {
+  background-color: $lightWarm;
+  color: white;
+  border: none;
+}
+
+.newParticipant__cancel {
+  grid-row: 4/5;
+  grid-column: 1/2;
+}

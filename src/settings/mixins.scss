@@ -13,21 +13,19 @@
   height: 100%;
 }
 
-@mixin label {
-  color: lighten(black, 20);
-  height: 60px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  text-indent: 10px;
-  display: block;
-  border: 0.25px solid lighten(black,10);
-  opacity: 1;
-  border-radius: 10px;
-
 @mixin input {
-  font-size: 20px;
-  height: 50%;
+  margin: 0 auto;
+  width: 95%;
+  //height: 80%;
+  font-size: 18px;
+  display: block;
+  background-color: transparent;
+  color: black;
+  padding: 10px;
+  //margin-top: 5px;
+  //border-radius: 10px;
+  transition: 0.5s;
+}
 
 @mixin label {
   font-family: 'Montserrat', sans-serif;
@@ -41,18 +39,18 @@
   padding: 5px;
   transition: 0.5s;
   color: $darkCold;
-  border: 0.25px solid lighten(black, 60);
+  border: 0.25px solid lighten(black, 75);
 
   &:focus-within {
-    font-size: 15px;
-    border: 0.25px solid $darkCold;
+    //font-size: 15px;
+    border: 1px solid $lightWarm;
   }
 }
 
 @mixin modal {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
   border-radius: 15px;
@@ -60,4 +58,31 @@
   overflow: hidden;
   box-shadow: 2px 12px 20px 0 rgba(0, 0, 0, 0.5);
   display: flex;
+}
+
+@mixin close {
+  width: 30px;
+  height: 30px;
+  background: url("../assets/close.svg") center no-repeat;
+  border: none;
+  cursor: pointer;
+  margin: 1em;
+}
+
+@mixin button {
+  width: 150px;
+  height: 50px;
+  justify-self: flex-end;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 5px;
+
+  &:hover {
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  }
 }
