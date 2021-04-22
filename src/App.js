@@ -8,9 +8,8 @@ import SignInPage from "./components/SignInPage/SignInPage";
 import SignUpPage from "./components/SignUpPage/SignUpPage";
 import DatabaseMain from "./components/DatabaseMain/DatabaseMain";
 import Projects from "./components/Projects/Projects";
-import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 import ProjectsNew from "./components/ProjectsNew/ProjectsNew";
-// import NewParticipantPage from "./components/NewParticipantPage/NewParticipantPage";
+import NewParticipantPage from "./components/NewParticipantPage/NewParticipantPage";
 
 const App = () => {
 
@@ -30,8 +29,8 @@ const App = () => {
                 <Route exact path={routes.home} component={DatabaseMain} />
                 <Route exact path={routes.projects} component={Projects} />
                 <Route exact path={routes.projectsNew} component={ProjectsNew} />
+                <Route exact path={routes.newParticipantForm} component={NewParticipantPage} />
             </Switch>
-                {/*<Route path={routes.newParticipantForm} component={NewParticipantPage} />*/}
         </Router>
     ) : <Loader />
 }
