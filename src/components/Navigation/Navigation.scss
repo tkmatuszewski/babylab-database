@@ -51,10 +51,10 @@
 }
 
 .database__hamburger.active {
-  transform: translateX(25vw)translateX(-50%);
+  transform: translateX(97vw)translateX(-50%);
   height: 8vh;
   border-radius: 0 40% 40% 0;
-  background: darken($darkWarm, 20);
+  // background: darken($darkWarm, 20);
   cursor: pointer;
 
   span {
@@ -83,7 +83,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 25vw;
+  width: 100%;
   background: linear-gradient(to bottom right, $darkCold, lighten($darkCold, 20));
   transform: translateX(-100%);
   transition: 0.5s;
@@ -92,17 +92,26 @@
 .navigation__container.active {
   transform: translateX(0);
   z-index: 99;
+  background: url("../../assets/lego_people.jpg") center no-repeat;
+  background-size: cover;
 
-  .navigation__list {
-    border-left: 10px solid $lightWarm;
-  }
+  // .navigation__list {
+  //   border-left: 10px solid $lightWarm;
+  // }
+}
+
+.navigation__darken {
+  width: 100%;
+  height: 100%;
+  background:rgba(0, 0, 0, 0.7)
 }
 
 .navigationMsg {
   height: 30%;
   display: flex;
-  margin-left: 10%;
+  // margin-left: 10%;
   align-items: center;
+  justify-content: center;
 
   .navigationMsg__title {
     color: white;
@@ -114,16 +123,17 @@
 
 .navigation__list {
   height: 60%;
-  width: 85%;
-  margin-left: 10%;
-  margin-top: auto;
+  width: 45%;
   padding: 2%;
-  background: rgba($color: #000000, $alpha: 0.7);
+  // background: rgba(0, 0, 0, 0.7);
   list-style-type: none;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   li {
-    margin-left: 10%;
-    margin-top: 5%;
+   line-height: 3em;
   }
 
   a {
