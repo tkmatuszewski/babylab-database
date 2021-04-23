@@ -1,27 +1,18 @@
 import React from "react";
 import DataRowProject from "../DataRowProject/DataRowProject";
 
-const DataRowDetailed = ({
-  close,
-  setDimBg,
-  data,
-  // age
-  // detailStatus,
-  // details,
-  // projects,
-  // id,
-}) => {
-
-  const info = data.childDataPassed
-  const id= data.id
-  const age = data.childData.age
+const DataRowDetailed = ({ close, setDimBg, data }) => {
+  const info = data.childDataPassed;
+  const id = data.id;
+  const age = data.childData.age;
 
   return (
     <section className="dataRowDetailed">
-       <button
+      <div className="dataRowDetailed__bg" />
+      <button
         className="dataRowDetailed__close"
         onClick={() => {
-          setDimBg(false)
+          setDimBg(false);
           close(null);
         }}
       />
@@ -29,15 +20,16 @@ const DataRowDetailed = ({
         <span>{info.childName}</span> <span>{info.childSurname}</span>
       </h1>
       <span className="dataRowDetailed__personal">
-        <div>{age +" "+"miesięcy"}</div>
-        <div>{info.birthday}r ({info.pregDuration}t.c)</div>
+        <div>{age + " " + "miesięcy"}</div>
+        <div>
+          {info.birthday}r ({info.pregDuration}t.c)
+        </div>
         <div>{info.languages}</div>
       </span>
       <ul className="dataRowDetailed__parent">
-          <h3>Rodzic</h3>
+        <h3>Rodzic</h3>
         <li>
-          <span>Imię i Nazwisko</span>: {info.parentName}{" "}
-          {info.parentSurname}
+          <span>Imię i Nazwisko</span>: {info.parentName} {info.parentSurname}
         </li>
         <li>
           <span>Miejsce zamieszkania</span>: {info.parentResidence}
@@ -47,7 +39,7 @@ const DataRowDetailed = ({
         </li>
       </ul>
       <ul className="dataRowDetailed__contact">
-          <h3>Kontakt</h3>
+        <h3>Kontakt</h3>
         <li>
           <span>Telefon kontaktowy</span>: {info.parentPhone}
         </li>
