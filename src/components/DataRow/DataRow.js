@@ -8,7 +8,7 @@ import DataRowProject from "../DataRowProject/DataRowProject";
 // import { MainBgThemeProvider } from "../MainBgContext/MainBgContext";
 import { db } from "../Firebase/FirebaseFirestore";
 
-const DataRow = ({ id, style, index, childData, getData, setDimBg}) => {
+const DataRow = ({ id, style, index, childData, getData, setDimBg }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [projectIncluded, setProjectIncluded] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,9 +17,9 @@ const DataRow = ({ id, style, index, childData, getData, setDimBg}) => {
   const childDataPassed = childData.data.data();
 
   const handleShowMore = () => {
-    const age = childDataPassed.age
-    setDimBg(true)
-    return getData({projectIncluded, id ,childDataPassed, childData})
+    const age = childDataPassed.age;
+    setDimBg(true);
+    return getData({ projectIncluded, id, childDataPassed, childData });
   };
 
   const handleDetailedAge = () => {
@@ -99,7 +99,10 @@ const DataRow = ({ id, style, index, childData, getData, setDimBg}) => {
             />
             {/* </MainBgContext.Provider> */}
           </div>
-          <div className="databaseData__list__element__more" onClick = {handleShowMore}>
+          <div
+            className="databaseData__list__element__more"
+            onClick={handleShowMore}
+          >
             Więcej
           </div>
           <DataRowMenu dataId={id} participant={childDataPassed} />
