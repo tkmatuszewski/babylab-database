@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const SearchBar = ({ value, filterUpdate, handleFilter, resetFilter }) => {
   const [filter, setFilter] = useState(false);
-  const [outsider, setOutsider] = useState(false);
+  // const [outsider, setOutsider] = useState(false);
   const [ageMin, setAgeMin] = useState("");
   const [ageMax, setAgeMax] = useState("");
 
@@ -10,14 +10,14 @@ const SearchBar = ({ value, filterUpdate, handleFilter, resetFilter }) => {
     return filterUpdate(e.target.value);
   };
 
-//   const handleUninvolved = (state) => {
-//     return setOutsider(!state);
-//   };
+  //   const handleUninvolved = (state) => {
+  //     return setOutsider(!state);
+  //   };
 
   const handleReset = () => {
-    setAgeMin("0");
+    setAgeMin("");
     setAgeMax("");
-    return resetFilter;
+    return handleFilter("","");
   };
 
   const handleSubmit = (e) => {
@@ -44,7 +44,7 @@ const SearchBar = ({ value, filterUpdate, handleFilter, resetFilter }) => {
             {" "}
             Wiek
             <label htmlFor="">
-              Od
+              min
               <input
                 type="text"
                 value={ageMin}
@@ -52,7 +52,7 @@ const SearchBar = ({ value, filterUpdate, handleFilter, resetFilter }) => {
               />
             </label>
             <label htmlFor="">
-              Do
+              max
               <input
                 type="text"
                 value={ageMax}
