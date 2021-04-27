@@ -27,11 +27,13 @@
 }
 
 .databaseData__list__element > div {
-  text-align: center;
+  margin-left: 3%;
 }
 
 .databaseData__list__element > svg {
-  width: $svgWidth;
+  // width: $svgWidth;
+  height: 35px;
+  width: 35px;
 }
 
 .databaseData__list__element__id {
@@ -57,9 +59,11 @@
 
 .databaseData__list__element__projects {
   width: $projectsWidth;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: overlay;
 }
 
 .databaseData__list__element__projects__container {
