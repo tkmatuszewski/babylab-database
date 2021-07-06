@@ -2,7 +2,8 @@
 
 .database__header {
   height: 8vh;
-  width: 100%;
+  // width: 100%;
+  display: flex;
   background-color: $headerColor;
 
   a {
@@ -16,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto
+  margin-right: 5%;
 }
 
 .database__logo {
@@ -30,41 +31,6 @@
     font-weight: bold;
   }
 }
-
-//.database__search__label {
-//  grid-column: 2/3;
-//  min-width: 100%;
-//  display: flex;
-//  background-color: white;
-//  border-radius: 10px;
-//}
-//
-//.database__search__icon {
-//  width: 40px;
-//  height: 40px;
-//  background: url("../../assets/search.svg") no-repeat center;
-//  border: none;
-//}
-//
-//.database__search__input {
-//  width: 90%;
-//}
-//
-//.database__search__filter {
-//  grid-column: 3/4;
-//  background: url("../../assets/filter.svg") no-repeat center;
-//  height: 25px;
-//  width: 25px;
-//  border: none;
-//  cursor: pointer;
-//  margin-left: 10px;
-//  opacity: 0.7;
-//  transition: 0.5s;
-//
-//  &:hover {
-//    opacity: 1;
-//  }
-//}
 
 .database__header__menu {
   width: 25%;
@@ -88,12 +54,13 @@
   justify-content: center;
   border: none;
   font-family: 'Work Sans', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   background: transparent;
   color: white;
   opacity: 0.5;
   cursor: pointer;
+  border-bottom: 5px solid transparent;
   transition: 0.5s;
 
   &:hover {

@@ -5,6 +5,6 @@ export const projects = "/projects"
 export const projectsNew = "/projects/new"
 export const newParticipantForm = "/new"
 export const resetPassword = "/reset"
-export const example1 = "/example1"
+export const stats = "/stats"
 export const example2 = "/example2"
 

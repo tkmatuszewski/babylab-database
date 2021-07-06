@@ -1,9 +1,26 @@
 @import "../../settings/colors";
 @import "../../settings/mixins";
+@import "../../settings/dataColumnWidth";
 
-.databaseData__container {
-  width: 90%;
-  margin-top: 2em;
+.databaseData__bg.dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.3;
+  z-index: 0;
+  transition: 0.5s;
+}
+
+.databaseData {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr;
+  min-height: 92vh;
 }
 
 .databaseData__loader {
@@ -13,79 +30,26 @@
   transform: translate(-50%, -50%);
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  color: $darkWarm;
+  color: $lightWarm;
 }
 
-.databaseData__filter {
-  width: 45%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2em;
-
-  label {
-    @include label;
-    width: 70%;
-    display: flex;
-    align-items: center;
-
-    span {
-      @include icon;
-      display: block;
-      background: url("../../assets/search.svg") center no-repeat;
-    }
-  }
-
-  input {
-    @include input;
-    padding: 0;
-    text-indent: 5px;
-  }
-}
-
-.databaseData__filter__title {
-  width: 60%;
-  display: block;
+.databaseData__noResults {
+  height: 100%;
   font-family: 'Montserrat', sans-serif;
+  font-size: 2.5em;
   font-weight: bold;
-  letter-spacing: -0.1px;
-  font-size: 35px;
-  color: lighten(black, 50);
+  color: lighten(black, 20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.databaseData__list {
-  height: 85%;
-  border: 0.25px solid rgba($darkCold, 0.5);
-  font-family: 'Source Sans Pro', sans-serif;
-  position: relative;
-}
-
-.databaseData__list__setup {
-  position: absolute;
-  top: 0;
+.data__detailed {
+  position: fixed;
+  top: 8vh;
   left: 0;
-  transform: translateX(-100%);
-  list-style-type: none;
-
-  li {
-    height: 60px;
-    width: 60px;
-    border: 0.25px solid rgba($darkCold, 0.5);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    line-height: 60px;
-    text-align: center;
-    cursor: pointer;
-
-    &:nth-of-type(2) {
-      border-top: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        fill: blue;
-      }
-    }
-  }
+  height: 100vh;
+  width: 100vw;
+  background: lightgray;
+  z-index: 1000;
 }

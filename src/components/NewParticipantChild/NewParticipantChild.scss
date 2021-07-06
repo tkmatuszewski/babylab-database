@@ -1,0 +1,103 @@
+@import "../../settings/mixins";
+@import "../../settings/colors";
+
+.newParticipant__right__subheader {
+  grid-row: 1/2;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 35px;
+  line-height: 80px;
+  color: lighten(black, 30);
+}
+
+.newParticipant__right__form {
+  grid-row: 2/3;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 25px;
+
+  label {
+    @include label;
+    height: 80px;
+  }
+
+  input {
+    @include input;
+  }
+
+  label:nth-of-type(1) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+
+  label:nth-of-type(2) {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+}
+
+.newParticipantChild__pregDuration {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.newParticipantChild__birth {
+  display: flex !important;
+
+  @include label;
+  height: 80px;
+  border-radius: 10px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+
+  label {
+    width: 30%;
+    border: none;
+    height: unset;
+
+    &:focus-within {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  input {
+    background-color: rgba($darkCold, 0.1);
+    border-radius: 10px;
+  }
+}
+
+#multilingual__label {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: end;
+  justify-self: center;
+
+  &:focus-within {
+    font-size: inherit;
+  }
+}
+
+#multilingual__input {
+  height: 20px;
+  width: 20px;
+}
+
+.newParticipantChild__languages {
+  grid-row: 3/4;
+  grid-column: 2/3;
+}
+
+.newParticipant__button.child {
+  @include button();
+  grid-row: 4/5;
+  grid-column: 1/2;
+  justify-self: end;
+  align-self: center;
+  background-color: $lightWarm;;
+}
+

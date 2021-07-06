@@ -1,119 +1,134 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import {db} from "../Firebase/FirebaseFirestore";
-import {AutoSizer, List} from 'react-virtualized'
-import DataRow from "../DataRow/DataRow";
+// import DatabaseTableHeader from "../DatabaseTableHeader/DatabaseTableHeader";
+import SearchBar from "../SearchBar/SearchBar";
+import DatabaseList from "../DatabaseList/DatabaseList";
+import DataRowDetailed from "../DataRowDetailed/DataRowDetailed";
 
-class DatabaseData extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loadingInProgress: true,
-            data: [],
-            dataFiltered: [],
-            projects: [],
-            filterValue: ""
+const classNames = require('classnames');
+
+
+const DatabaseData = () => {
+
+    const [loading, setLoading] = useState(true)
+    const [data, setData] = useState([])
+    const [dataDefault, setDataDefault] = useState([])
+    const [filterValue, setFilterValue] = useState("")
+    const [ageMin, setAgeMin] = useState("")
+    const [ageMax, setAgeMax] = useState("")
+    const [outOfGrid, getOutOfGrid]= useState(null)
+    const [dimBg, setDimBg]= useState(false)
+
+    const handleChildAge = date => {
+
+        const dateElements = date.split(".")
+        const today = new Date();
+
+        //years
+        let ageYears = today.getFullYear() - dateElements[2];
+
+        //months
+        let ageMonths = today.getMonth() - dateElements[1]
+        let age =
+            {
+                years: ageYears,
+                months: ageMonths,
+                ageInMonths: ageYears * 12 + ageMonths,
+                ageInYears: Number(ageYears + ageMonths / 12).toFixed(2)
+            }
+        const m = today.getMonth() - dateElements[1];
+        if (m < 0 || (m === 0 && today.getDate() < dateElements[0])) {
+            ageYears--;
         }
+        return age.ageInYears
     }
 
-    handleClickAll = () => {
-        const filtered = this.state.data.filter(child =>
-            child)
-        return this.setState({dataFiltered: filtered})
+    const filterUpdate = (searchTerm) => {
+        const filtered = dataDefault.filter(child => {
+            console.log(dataDefault)
+            const childData = child.data.data()
+            // const childAge = child.age
+           
+            return (childData.childName.toLowerCase().includes(searchTerm.toLowerCase()) || childData.childSurname.toLowerCase().includes(searchTerm.toLowerCase())) 
+            // && ageFilterCondition(ageMin, ageMax, childAge)
+        })
+        setFilterValue(searchTerm)
+        setData(filtered);
     }
 
-    handleClickSelected = () => {
-        const filtered = this.state.data.filter(child =>
-            child.selected === true)
-        return this.setState({dataFiltered: filtered})
+    // const minAgeFilterCondition = (age) => {
+    //     const filtered = dataDefault.filter(child => {
+    //         return(Number(child.age) >= Number(age)
+    //     )})
+    //     setAgeMin(age)
+    //     return setData(filtered);
+    // }
+
+    // const maxAgeFilterCondition = (age) => {
+    //     const filtered = dataDefault.filter(child => {
+    //         return(Number(child.age) <= Number(age)
+    //     )})
+    //     setAgeMax(age)
+    //     return setData(filtered);
+    // }
+
+    const age = "12"
+    const max = ageMax 
+    const min = ageMin
+
+
+    const handleFilter = (ageMin, ageMax, participant) => {
+
+        const condition = Number(ageMin) <= Number(ageMax) && Number(age) >= Number(min) && participant
+
+        const filtered = dataDefault.filter(child => {
+            return(condition)
+        })
+        // setAgeMax(age)
+        return setData(filtered);
     }
 
-    handleFilter = () => {
-        const value = this.state.filterValue.toLowerCase();
+    const background = classNames("databaseData__bg", {"dim": dimBg})
 
-        const filtered = this.state.data.data().filter(child =>
-            child.childName.toLowerCase().includes(value) ||
-            child.childSurname.toLowerCase().includes(value))
-        return this.setState({dataFiltered: filtered})
+
+    const dataPasser = (data)=> {
+        return getOutOfGrid(data)
     }
 
-    handleChange = e => {
-        this.setState({filterValue: e.target.value}, this.handleFilter)
-    }
-
-    rowRenderer = ({index, key, style}) => {
-        const childData = this.state.dataFiltered[index];
-        return <DataRow index={index} id={key} childData={childData} style={style} />
-    }
-
-    render() {
-        const rowHeight = 60;
-
-        return (
-            <div className="databaseData__container">
-                <form className="databaseData__filter">
-                    <h2 className="databaseData__filter__title">Przeszukaj bazę</h2>
-                    <label>
-                        <span />
-                        <input type="text"
-                               value={this.state.filterValue}
-                               autoComplete="off"
-                               placeholder="Szukaj po imieniu lub nazwisku"
-                               onChange={this.handleChange} />
-                    </label>
-                </form>
-                {this.state.loadingInProgress && <h2 className="databaseData__loader">Loading Data</h2>}
-                <div className="databaseData__list">
-                    <ul className="databaseData__list__setup">
-                        <li onClick={() => this.handleClickAll()}>W</li>
-                        <li onClick={() => this.handleClickSelected()}>
-                            <svg className={"databaseData__list__element__fav"} xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 48 48" height={"30"} width={"30"} fill={"blue"}>
-                                <path
-                                    d="M12.9 29.6l-2.3 13.2c-0.1 0.4 0.1 0.8 0.4 1 0.3 0.2 0.7 0.3 1.1 0.1L24 37.6l11.9 6.3c0.2 0.1 0.3 0.1 0.5 0.1 0.2 0 0.4-0.1 0.6-0.2 0.3-0.2 0.5-0.6 0.4-1l-2.3-13.2 9.6-9.4c0.3-0.3 0.4-0.7 0.3-1 -0.1-0.4-0.4-0.6-0.8-0.7l-13.3-1.9L24.9 4.5c-0.3-0.7-1.5-0.7-1.8 0l-5.9 12.1L3.9 18.5c-0.4 0.1-0.7 0.3-0.8 0.7s0 0.8 0.3 1L12.9 29.6zM18 18.5c0.3 0 0.6-0.2 0.8-0.5L24 7.2l5.3 10.7c0.2 0.3 0.4 0.5 0.8 0.6l11.8 1.7 -8.5 8.3c-0.2 0.2-0.3 0.6-0.3 0.9l2 11.8 -10.6-5.5c-0.3-0.1-0.6-0.1-0.9 0l-10.6 5.6 2-11.8c0.1-0.3 0-0.7-0.3-0.9l-8.5-8.3L18 18.5z"
-                                    fill="black" />
-                            </svg>
-                        </li>
-                    </ul>
-                    <AutoSizer>
-                        {({width, height}) => (
-                            <List
-                                width={width}
-                                height={height}
-                                rowHeight={rowHeight}
-                                rowRenderer={this.rowRenderer}
-                                rowCount={this.state.dataFiltered.length}
-                                handleClick={this.handleClick} />
-                        )}
-                    </AutoSizer>
-                </div>
-            </div>
-        )
-    }
-
-    componentDidMount() {
-        db.collection('childrenDatabase').onSnapshot(querySnapshot => {
-            querySnapshot.docChanges().map(change => {
-                let data = "";
-                if (change.type === "added") {
-
-                    data = this.setState({
-                        dataFiltered: this.state.data.concat(change.doc.data()),
-                        data: this.state.data.concat(change.doc.data())
-                    });
+    useEffect(() => {
+            setLoading(true)
+            const unsubscribe = db.collection("childrenDatabase").onSnapshot(snapshot => {
+                    const loadedData = [];
+                    snapshot.forEach(change => {
+                        return loadedData.push({
+                            data: change,
+                            age: handleChildAge(change.data().birthday)
+                        });
+                    })
+                    setDataDefault(loadedData)
+                    setData(loadedData)
+                    setLoading(false)
+                }, error => {
+                    console.log(error)
                 }
-                if (change.type === "modified") {
-                    data = console.log("Zmodyfikowano ", change.doc);
-                }
-                if (change.type === "removed") {
-                    const filtered = this.state.data.filter(event => event.id !== change.doc.id);
-                    data = this.setState({data: filtered});
-                }
-                return data
-            })
-        }, this.setState({
-            loadingInProgress: false
-        }))
-    }
+            );
+            return () => unsubscribe()
+        }, [setDataDefault, setData, setLoading]
+    )
+
+    return (
+        <div className="databaseData">
+            <div className={background} />
+            {outOfGrid ? <DataRowDetailed close={dataPasser} data={outOfGrid} setDimBg={setDimBg}/> : null}
+            <SearchBar filterValue={filterValue} setFilterValue={setFilterValue} filterUpdate={filterUpdate} ageMin={ageMin} ageMax= {ageMax} 
+            // minAgeFilterCondition={minAgeFilterCondition} maxAgeFilterCondition={maxAgeFilterCondition} 
+            handleFilter= {handleFilter}
+                       />
+            {loading && <h2 className="databaseData__loader">Loading Data</h2>}
+            <DatabaseList data={data} setData={setData} loading={loading} filterValue={filterValue}
+                          filterUpdate={filterUpdate} dataDefault={dataDefault} dataPasser={dataPasser} setDimBg={setDimBg}/>
+        </div>
+    )
 }
 
 export default DatabaseData

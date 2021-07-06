@@ -1,0 +1,19 @@
+@import "../../settings/mixins";
+
+.newParticipant__buttons {
+  grid-row: 4/5;
+  grid-column: 1/2;
+  justify-self: end;
+  align-self: center;
+}
+.newParticipant__button.prev {
+  @include button();
+  grid-row: 3/4;
+  background: $darkCold;
+
+}
+
+.newParticipant__button.next {
+  @include button();
+  background-color: $lightWarm;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import MeetingsMarkers from "../MeetingsMarkers/MeetingsMarkers";
 import {db} from "../Firebase/FirebaseFirestore";
+import ProjectsNew from "../ProjectsNew/ProjectsNew";
 
 const ProjectsItem = ({id, data}) => {
 

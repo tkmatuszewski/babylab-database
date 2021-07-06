@@ -1,0 +1,80 @@
+@import "../../settings/colors";
+@import "../../settings/mixins";
+
+// .dataRowSelectProject__bg {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   height: 100vh;
+//   width: 100vw;
+//   background: rgba(black, 0.4);
+// }
+
+.dataRowSelectProject {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35vw;
+  height: 40vh;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 3px #6e6e6e;
+  display: grid;
+  grid-template-rows: 50px 50px 1fr 1fr;
+  z-index: 4000;
+}
+
+.dataRowSelectProject__close {
+  grid-row: 1/2;
+  @include close;
+  justify-self: flex-end;
+}
+
+.dataRowSelectProject__subheader {
+  grid-row: 2/3;
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  justify-self: center;
+  align-self: center;
+
+  strong {
+    color: $darkCold;
+  }
+}
+
+#selectProject {
+  grid-row: 3/4;
+  width: 75%;
+  height: 33%;
+  align-self: center;
+  justify-self: center;
+  background: white;
+  border: 0.25px solid $darkCold;
+  border-radius: 10px;
+  font-size: 18px;
+
+  option {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+.dataRowSelectProject__button {
+  grid-row: 4/5;
+  width: 33%;
+  height: 50%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  background-color: #f7a823;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  align-self: center;
+  justify-self: center;
+}

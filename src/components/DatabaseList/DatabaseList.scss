@@ -1,0 +1,75 @@
+@import "../../settings/colors";
+
+.databaseData__list {
+grid-row: 2/3;
+grid-column: 1/3;
+display: grid;
+grid-template-columns: 5% 1fr;
+}
+
+  .databaseData__list__setup {
+    grid-column: 1/2;
+    background: #eeeded;
+    list-style-type: none;
+  }
+    .databaseData__list__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 65px;
+      border-left: 10px solid transparent;
+      transition: 0.5s;
+      cursor: pointer;
+  
+        // svg {
+        //   fill: blue;
+        // }
+      }
+
+      .databaseData__list__item.active {
+        border-left: 10px solid $lightWarm;
+      }
+
+      // .databaseData__list__image__filter {
+      //   height: 35px;
+      //   width: 35px;
+      //   background: url(../../assets/filter.svg) center no-repeat;
+      //   background-size: contain;
+      // } 
+
+      .databaseData__list__image__fav {
+        height: 35px;
+        width: 35px;
+        background: url(../../assets/star.svg) center no-repeat;
+        background-size: contain;
+      }
+
+      .databaseData__list__image__not{
+        height: 35px;
+        width: 35px;
+        background: url(../../assets/notification.svg) center no-repeat;
+        background-size: contain;
+      }
+
+  .databaseData__wrapper {
+    grid-column: 2/3;
+    width: 95%;
+  }
+
+  .databaseData__noResults {
+display: flex;
+flex-direction: column;
+
+  .databaseData__illustration {
+    grid-row: 1/2;
+    align-self: center;
+    width: 50%;
+    height: 60%;
+    background: url("../../assets/noRecords.svg") center no-repeat;
+    background-size: contain;
+    transition: 0.5s;
+  }
+  strong {
+    margin-top: 1em;
+  }
+}

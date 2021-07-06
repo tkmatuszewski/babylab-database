@@ -1,22 +1,29 @@
 import React, {useState} from "react";
-import {example1, example2, home, newParticipantForm, projects} from "../../routes";
+import {example2, home, newParticipantForm, projects, stats} from "../../routes";
 import NavigationItem from "../NavigationItem/NavigationItem";
 
 const classNames = require('classnames');
 
-const Navigation = ({children}) => {
+const Navigation = () => {
 
     const [showMenu, setShowMenu] = useState(false)
 
-    const handleClickHamburger = (state) => {
-        return setShowMenu(!state);
+    const handleClickHamburger = () => {
+        return setShowMenu(!showMenu);
     }
 
+    const navigation = classNames("navigation", {
+        "active": showMenu
+    })
     const hamburger = classNames("database__hamburger", {
         "active": showMenu
     })
     const menu = classNames(
-        "databaseMenu__nav", {
+        "navigation__list", {
+            "active": showMenu
+        })
+    const sidebar = classNames(
+        "navigation__container", {
             "active": showMenu
         })
     const page = classNames(
@@ -26,39 +33,35 @@ const Navigation = ({children}) => {
     )
 
     return (
-        <div className="database__container">
-            <div className={hamburger}
-                 onClick={() => handleClickHamburger(showMenu)}>
+        <div className={navigation}>
+            <button className={hamburger}
+                    onClick={handleClickHamburger}>
                 <span />
                 <span />
                 <span />
-            </div>
-            <div className="database__nav__container">
+            </button>
+            <div className={sidebar}>
+                <div className="navigationMsg">
+                    <h3 className="navigationMsg__title">Menu</h3>
+                </div>
                 <nav className={menu}>
-                        <NavigationItem name={"Home"}
-                                        value={home}
-                                        closeNav={setShowMenu}
-                        />
-                        <NavigationItem name={"Nowy badany"}
-                                        value={newParticipantForm}
-                                        closeNav={setShowMenu}
-                        />
-                        <NavigationItem name={"Projekty"}
-                                        value={projects}
-                                        closeNav={setShowMenu}
-                        />
-                        <NavigationItem name={"Inne 1"}
-                                        value={example1}
-                                        closeNav={setShowMenu}
-                        />
-                        <NavigationItem name={"Inne 2"}
-                                        value={example2}
-                                        closeNav={setShowMenu}
-                        />
+                    <NavigationItem name={"Home"}
+                                    value={home}
+                                    closeNav={setShowMenu}
+                    />
+                    <NavigationItem name={"Nowy badany"}
+                                    value={newParticipantForm}
+                                    closeNav={setShowMenu}
+                    />
+                    <NavigationItem name={"Projekty"}
+                                    value={projects}
+                                    closeNav={setShowMenu}
+                    />
+                    <NavigationItem name={"Statystyki"}
+                                    value={stats}
+                                    closeNav={setShowMenu}
+                    />
                 </nav>
-            </div>
-            <div className={page}>
-                {children}
             </div>
         </div>
     )

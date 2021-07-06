@@ -3,10 +3,11 @@ import React from "react";
 const Loader = () => {
     return (
         <div className="app__loader">
-            <div className="app__loader__container">
-                <div className="app__logo"><strong>Data</strong>base</div>
-                <span>Loading...</span>
+            <div className="lds-ripple">
+                <div/>
+                <div/>
             </div>
+            <div className="app__loader__text">Loading...</div>
         </div>
     )
 }

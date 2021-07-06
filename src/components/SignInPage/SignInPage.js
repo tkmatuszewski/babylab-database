@@ -23,6 +23,7 @@ const SignInPage = ({history}) => {
                 case "auth/invalid-email":
                     setEmailError(error.message)
                     break
+                default:
                 case "auth/user-not-found":
                 case "auth/user-disabled":
                 case "auth/wrong-password":
